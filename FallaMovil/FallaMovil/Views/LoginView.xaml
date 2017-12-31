@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="FallaMovil.Views.LoginView"    
+    BindingContext="{Binding Main, Source={StaticResource Locator}}"
+    Title="Inicio de sesión">
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding Login}"
+            Padding="8"
+            Spacing="16">
+            <Label 
+                FontAttributes="Bold"
+                FontSize="Large"
+                HorizontalOptions="Center"
+                Text="Falla Barón de Patraix-Cuenca">
+            </Label>
+            <Grid
+                Margin="20,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Label
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Text="E-Mail :"
+                    VerticalOptions="Center">
+                </Label>
+                <Entry
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    Keyboard="Email"
+                    Placeholder="Introduce tu Email ..."
+                    Text="{Binding Email, Mode=TwoWay}">
+                </Entry>
+                <Label
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    Text="Contraseña :"
+                    VerticalOptions="Center">
+                </Label>
+                <Entry
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    IsPassword="True"
+                    Placeholder="Introduce tu contraseña ..."
+                    Text="{Binding Password, Mode=TwoWay}">
+                </Entry>
+            </Grid>
+            <StackLayout
+                HorizontalOptions="Center"
+                Orientation="Horizontal">
+                <Label
+                    FontSize="Medium"
+                    Text="Recuerdame "
+                    VerticalOptions="Center">
+                </Label>
+                <Switch
+                    IsToggled="{Binding IsToggled, Mode=TwoWay}">
+                </Switch>
+            </StackLayout>
+            <Label
+                FontSize="Medium"
+                HorizontalOptions="Center"
+                Text="Has olvidado tú contraseña?"
+                TextColor="Blue">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding RecuperarPasswordCommand}"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <ActivityIndicator
+                IsRunning="{Binding IsRunning, Mode=TwoWay}">
+            </ActivityIndicator>
+            <StackLayout
+                Margin="35,0">
+                <Button 
+                BackgroundColor="Navy"
+                BorderRadius="23"
+                Command="{Binding LoginCommand}"
+                FontAttributes="Bold"
+                HeightRequest="46"
+                IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+                Text="Iniciar Sesión"
+                TextColor="White">
+                </Button>
+
+                <Button 
+                BackgroundColor="Purple"
+                BorderRadius="23"
+                Command="{Binding RegistrarseCommand}"
+                FontAttributes="Bold"
+                HeightRequest="46"
+                IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+                Text="Registrarse"
+                TextColor="White">
+                </Button>
+
+                <Button 
+                BackgroundColor="Blue"
+                BorderRadius="23"
+                Command="{Binding LoginFacebookCommand}"
+                FontAttributes="Bold"
+                HeightRequest="46"
+                IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+                Text="Iniciar Sesión con Facebook"
+                TextColor="White">
+                </Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
