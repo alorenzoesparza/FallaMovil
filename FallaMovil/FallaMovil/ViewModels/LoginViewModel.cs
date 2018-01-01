@@ -176,9 +176,11 @@
                 await dialogService.VerMensaje("Error", connection.Message);
                 return;
             }
+            
+            var mainViewModel = MainViewModel.GetInstancia();
 
             var response = await apiService.GetToken(
-                "http://antoniole.com/FallaMovilApi/Token",
+                string.Format("{0}{1}/Token", mainViewModel.BaseUrl,mainViewModel.ApiUrl),
                 Email,
                 Password);
 
@@ -186,6 +188,7 @@
             {
                 IsRunning = false;
                 IsEnabled = true;
+
                 await dialogService.VerMensaje(
                     "Error",
                     "El servicio no está listo. Reintente más tarde.");
@@ -197,6 +200,7 @@
             {
                 IsRunning = false;
                 IsEnabled = true;
+
                 await dialogService.VerMensaje(
                     "Error",
                     response.ErrorDescription);
@@ -204,11 +208,11 @@
                 return;
             }
 
-            var mainViewModel = MainViewModel.GetInstancia();
-            //mainViewModel.Acts = new ActListViewModel();
-            //mainViewModel.Token = response;
+            //var mainViewModel = MainViewModel.GetInstancia();
+            mainViewModel.Acts = new ActsViewModel();
+            mainViewModel.Token = response;
 
-            await navigationService.Navegar("ActListView");
+            await navigationService.Navegar("ActView");
             Email = null;
             Password = null;
 

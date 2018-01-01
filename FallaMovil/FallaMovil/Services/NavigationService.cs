@@ -1,5 +1,6 @@
 ﻿namespace FallaMovil.Services
 {
+    using FallaMovil.Views;
     using System.Threading.Tasks;
     using Xamarin.Forms;
     public class NavigationService
@@ -8,11 +9,11 @@
         {
             switch (pageName)
             {
-                case "ActListView":
-                    //await Application.Current.MainPage.Navigation.PushAsync(new ActListView());
+                case "ActView":
+                    await Application.Current.MainPage.Navigation.PushAsync(new ActView());
                     break;
-                case "ActDetailView":
-                    //await Application.Current.MainPage.Navigation.PushAsync(new ActDetailView());
+                case "ActAssistanceView":
+                    await Application.Current.MainPage.Navigation.PushAsync(new ActAssistanceView());
                     break;
             }
         }
