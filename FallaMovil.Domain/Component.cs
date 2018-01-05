@@ -2,12 +2,15 @@
 {
     using Newtonsoft.Json;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Component
     {
         [Key]
         [Display(Name = "Componente Comisión")]
         public int IdFallero { get; set; }
+
+        public int TipoComponente { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
         [MaxLength(256, ErrorMessage = "El campo{0} debe tener como máximo {1} caracteres")]
@@ -57,6 +60,9 @@
         public bool TieneDependientes { get; set; }
 
         public bool EsDependiente { get; set; }
+
+        [NotMapped]
+        public string Password { get; set; }
         //Relaciones
         //Varias componentes en un sexo
         [JsonIgnore]

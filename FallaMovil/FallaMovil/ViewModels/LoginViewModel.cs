@@ -130,8 +130,8 @@
             dialogService = new DialogService();
             navigationService = new NavigationService();
 
-            Email = "amparo@gmail.com";
-            Password = "amparo@gmail.com";
+            Email = "carlos@gmail.com";
+            Password = "carlos@gmail.com";
 
             IsEnabled = true;
             IsToggled = true;
@@ -212,7 +212,7 @@
             mainViewModel.Acts = new ActsViewModel();
             mainViewModel.Token = response;
 
-            await navigationService.Navegar("ActView");
+            navigationService.SetMainPage("MasterView");
             Email = null;
             Password = null;
 

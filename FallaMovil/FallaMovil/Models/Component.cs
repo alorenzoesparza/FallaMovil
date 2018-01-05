@@ -1,11 +1,12 @@
-﻿namespace FallaMovil.API.Models
-{
-    using Domain;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-    public class ComponentResponse
+namespace FallaMovil.Models
+{
+    public class Component
     {
         public int IdFallero { get; set; }
 
@@ -33,10 +34,6 @@
 
         public bool EsDependiente { get; set; }
 
-        [NotMapped]
         public string Password { get; set; }
-        //Relaciones
-        [JsonIgnore]
-        public virtual List<ActAssistance> ActAssistances { get; set; }
     }
 }

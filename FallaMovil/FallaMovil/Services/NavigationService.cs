@@ -5,23 +5,55 @@
     using Xamarin.Forms;
     public class NavigationService
     {
-        public async Task Navegar(string pageName)
+        public void SetMainPage(string pageName)
         {
             switch (pageName)
             {
-                case "ActView":
-                    await Application.Current.MainPage.Navigation.PushAsync(new ActView());
+                case "LoginView":
+                    Application.Current.MainPage = new NavigationPage(new LoginView());
                     break;
-                case "ActAssistanceView":
-                    await Application.Current.MainPage.Navigation.PushAsync(new ActAssistanceView());
+                case "MasterView":
+                    Application.Current.MainPage = new MasterView();
                     break;
             }
         }
 
-        public async Task Back()
+        public async Task Navegar(string pageName)
+        {
+            App.Master.IsPresented = false;
+
+            switch (pageName)
+            {
+                case "ActView":
+                    await App.Navigator.PushAsync(new ActView());
+                    break;
+                case "ActAssistanceView":
+                    await App.Navigator.PushAsync(new ActAssistanceView());
+                    break;
+            }
+        }
+
+        //public async Task NavigateOnLogin(string pageName)
+        //{
+        //    switch (pageName)
+        //    {
+        //        case "NewCustomerView":
+        //            await Application.Current.MainPage.Navigation.PushAsync(
+        //                new NewCustomerView());
+        //            break;
+        //    }
+        //}
+
+        public async Task BackOnMaster()
+        {
+            await App.Navigator.PopAsync();
+        }
+
+        public async Task BackOnLogin()
         {
             await Application.Current.MainPage.Navigation.PopAsync();
         }
+
     }
 }
 

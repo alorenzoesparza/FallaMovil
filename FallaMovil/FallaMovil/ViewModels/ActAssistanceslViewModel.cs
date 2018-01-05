@@ -266,7 +266,7 @@
 
         public async void DelAsistencia()
         {
-            await navigationService.Navegar("ActAssitanceView");
+            await navigationService.Navegar("MasterView");
         }
         #endregion
     }
